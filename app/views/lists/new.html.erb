@@ -1,0 +1,10 @@
+<% provide(:title, 'New List') %>
+<h1>Create New List</h1>
+
+<%= form_with(model: @list, url: lists_path, local: true) do |f| %>
+
+<%= f.label :name %>
+<%= f.text_field :name %>
+
+<%= f.submit 'Create List' %>
+<% end %>
