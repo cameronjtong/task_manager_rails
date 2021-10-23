@@ -6,6 +6,13 @@ class TasksController < ApplicationController
       redirect_to @list
     end
 
+    def destroy
+      task = Task.find(params[:id])
+      list = task.list
+      task.destroy
+      redirect_to list
+    end
+
     private
 
     def task_params

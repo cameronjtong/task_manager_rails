@@ -1,5 +1,5 @@
-<ul>
+<ol>
 <% @list.tasks.each do |task| %>
-<li><%= task.content %></li>
+<li><%= task.content %>-><%= task.id %><%= link_to '(delete)', task , method: :delete %></li>
 <% end %>
-</ul>
+</ol>

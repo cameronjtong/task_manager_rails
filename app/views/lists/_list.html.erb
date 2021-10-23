@@ -1,6 +1,3 @@
 <ul>
 <li><%= link_to(list.name, list_path(list)) %></li>
-<% if list.tasks.any? %>
-<%= render 'lists/tasks' %>
 </ul>
-<% end %>
