@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   root 'static_pages#home'
   get '/home', to: 'static_pages#home'
   resources :lists
+  resources :tasks, only: %i[create destroy]
 end
