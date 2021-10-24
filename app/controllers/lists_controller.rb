@@ -6,11 +6,11 @@ class ListsController < ApplicationController
   def create
     @list = List.new(list_params)
     if @list.save
-      flash[:success] = 'List created successfully!'
+      flash[:success] = "List created successfully!"
       redirect_to lists_path
     else
-      flash[:danger] = 'Invalid list name'
-      render 'new'
+      flash[:danger] = "Invalid list name"
+      render "new"
     end
   end
 
@@ -24,7 +24,7 @@ class ListsController < ApplicationController
 
   def destroy
     List.find(params[:id]).destroy
-    flash[:success] = 'List successfully deleted!'
+    flash[:success] = "List successfully deleted!"
     redirect_to root_url
   end
 

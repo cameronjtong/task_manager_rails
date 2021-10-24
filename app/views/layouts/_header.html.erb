@@ -4,8 +4,13 @@
         <nav>
           <ul class='nav navbar-nav navbar-right'>
             <li><%= link_to 'Home', root_url %></li>
+            <% if logged_in? %>
             <li><%= link_to 'Create Lists', new_list_path %></li>
             <li><%= link_to 'View Lists', lists_path %></li>
+            <% else %>
+            <li><%= link_to 'Login', login_path %></li>
+            <li><%= link_to 'Sign up', signup_path %></li>
+            <% end %>
           </ul>
         </nav>
       </div>

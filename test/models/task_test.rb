@@ -3,7 +3,7 @@ require "test_helper"
 class TaskTest < ActiveSupport::TestCase
   def setup
     @list = lists(:grocery)
-    @task = @list.tasks.build(content: 'Folgers coffee')
+    @task = @list.tasks.build(content: "Folgers coffee")
   end
 
   test "should be valid" do
@@ -16,8 +16,7 @@ class TaskTest < ActiveSupport::TestCase
   end
 
   test "task cannot be empty" do
-    @task.content = ''
+    @task.content = ""
     assert_not @task.valid?
   end
-
 end
