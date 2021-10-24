@@ -2,6 +2,7 @@ require "test_helper"
 
 class CreateListsTest < ActionDispatch::IntegrationTest
   def setup
+    log_in_as(users(:cameron))
     @list = lists(:grocery)
   end
   test "valid list creation" do
