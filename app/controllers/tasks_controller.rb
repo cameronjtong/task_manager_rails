@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  before_action :logged_in_user
   def create
     @list = List.find(params[:id])
     @list.tasks.create!(task_params)
