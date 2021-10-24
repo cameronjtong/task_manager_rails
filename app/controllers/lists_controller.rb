@@ -5,22 +5,22 @@ class ListsController < ApplicationController
   end
 
   def create
-    @list = List.new(list_params)
+    @list = current_user.lists.build(list_params)
     if @list.save
       flash[:success] = "List created successfully!"
       redirect_to lists_path
     else
-      flash[:danger] = "Invalid list name"
+      flash.now[:danger] = "Invalid list name"
       render "new"
     end
   end
 
   def index
-    @lists = List.all
+    @lists = current_user.lists.all
   end
 
   def show
-    @list = List.find(params[:id])
+    @list = current_user.lists.find_by(id: params[:id])
   end
 
   def destroy

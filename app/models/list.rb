@@ -1,4 +1,5 @@
 class List < ApplicationRecord
+  belongs_to :user
   has_many :tasks, dependent: :destroy
-  validates(:name, presence: true, length: { maximum: 70 }, uniqueness: { case_sensitive: true })
+  validates(:name, presence: true, length: { maximum: 70 })
 end
