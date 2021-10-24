@@ -1,3 +1,9 @@
 cameron:
   name: 'Cameron Tong'
   email: 'cameron@cameron.com'
+  password_digest: <%= User.digest('foobar') %>
+
+nick:
+  name: 'Nick'
+  email: 'nick@nick.com'
+  password_digest: <%= User.digest('foobar') %>

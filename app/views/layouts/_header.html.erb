@@ -2,11 +2,24 @@
       <div class='container'>
         <%=link_to 'Task Manager', root_url, id: 'logo' %>
         <nav>
-          <ul class='nav navbar-nav navbar-right'>
+          <div class='navbar-header'>
+            <button type='button', class='navbar-toggle collapsed'
+                    data-toggle='collapse'
+                    data-target='#dropdown_info'
+                    aria-expanded='false'>
+            <span class='sr-only'>Toggle Navigation</span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+            <span class='icon-bar'></span>
+          </button>
+          </div>
+          <ul class='nav navbar-nav navbar-right collapse navbar-collapse'
+              id='dropdown_info'>
             <li><%= link_to 'Home', root_url %></li>
             <% if logged_in? %>
             <li><%= link_to 'Create Lists', new_list_path %></li>
             <li><%= link_to 'View Lists', lists_path %></li>
+            <li><%= link_to 'Logout', logout_path, method: 'delete' %></li>
             <% else %>
             <li><%= link_to 'Login', login_path %></li>
             <li><%= link_to 'Sign up', signup_path %></li>
