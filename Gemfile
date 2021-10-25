@@ -61,3 +61,7 @@ group :test do
   gem "rexml"
   gem "webdrivers"
 end
+
+group :production do
+  gem 'pg',         '1.2.3'
+end
