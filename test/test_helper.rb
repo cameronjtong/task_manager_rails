@@ -18,19 +18,24 @@ module ActiveSupport
       session[:user_id] = user.id
     end
 
+    def is_logged_in?
+      !session[:user_id].nil?
+    end
+
     # Add more helper methods to be used by all tests here...
   end
 end
 
 module ActionDispatch
   class IntegrationTest
-    def log_in_as(user, password: "foobar")
+    def log_in_as(user, password: "foobar", remember_me: '1')
       post login_path,
            params: {
              session: {
                email: user.email,
                password: password,
                password_confirmation: password,
+               remember_me: remember_me
              },
            }
     end
