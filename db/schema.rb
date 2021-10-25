@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2021_10_24_182339) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
-    t.index ["name"], name: "index_lists_on_name", unique: true
+    t.index ["user_id", "name"], name: "index_lists_on_user_id_and_name", unique: true
     t.index ["user_id"], name: "index_lists_on_user_id"
   end
 

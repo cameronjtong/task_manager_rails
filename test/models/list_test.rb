@@ -3,6 +3,7 @@ require "test_helper"
 class ListTest < ActiveSupport::TestCase
   def setup
     @user = users(:cameron)
+    @other_user = users(:nick)
     @list = @user.lists.build(name: 'Lorem')
   end
 
@@ -20,4 +21,10 @@ class ListTest < ActiveSupport::TestCase
     @list.name = new_name
     assert_not @list.valid?
   end
+# why doesnt this work in the app?
+  # test "different users should be able to have same list names" do
+  #   second_list = @other_user.lists.build(name: 'Lorem')
+  #   @list.save
+  #   assert second_list.valid?
+  # end
 end

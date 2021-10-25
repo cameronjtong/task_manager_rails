@@ -2,6 +2,8 @@
 
 grocery:
   name: 'Grocery List'
+  user: cameron
 
 reading:
   name: 'Reading List'
+  user: cameron
