@@ -10,14 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_25_133026) do
-
+ActiveRecord::Schema.define(version: 20_211_025_141_458) do
   create_table "lists", force: :cascade do |t|
     t.text "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id"
-    t.index ["user_id", "name"], name: "index_lists_on_user_id_and_name", unique: true
+    t.index %w[user_id name], name: "index_lists_on_user_id_and_name", unique: true
     t.index ["user_id"], name: "index_lists_on_user_id"
   end
 
@@ -36,6 +35,7 @@ ActiveRecord::Schema.define(version: 2021_10_25_133026) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "password_digest"
     t.string "remember_digest"
+    t.string "reset_digest"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 

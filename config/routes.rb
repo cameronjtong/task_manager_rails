@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   resources :lists
   resources :users
   resources :tasks, only: %i[create destroy]
+  resources :password_resets, only: %i[new create edit update]
 end

@@ -1,9 +1,9 @@
 class User < ApplicationRecord
-  attr_accessor :remember_token
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
+  attr_accessor :remember_token, :reset_token
 
   has_many :lists, dependent: :destroy
   before_save { self.email = email.downcase }
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates(:name, presence: true, length: { maximum: 70 })
   validates(
     :email,
@@ -37,8 +37,19 @@ class User < ApplicationRecord
     update_attribute(:remember_digest, nil)
   end
 
-  def authenticated?(remember_token)
-    return false if remember_digest.nil?
-    BCrypt::Password.new(remember_digest).is_password?(remember_token)
+  def create_reset_digest
+    self.reset_token = User.new_token
+    update_attribute(:reset_digest, User.digest(reset_token))
+  end
+
+  def send_password_reset_email
+    UserMailer.password_reset(self).deliver_now
+  end
+
+  def authenticated?(attribute, token)
+    digest = send("#{attribute}_digest")
+    return false if digest.nil?
+
+    BCrypt::Password.new(digest).is_password?(token)
   end
 end
